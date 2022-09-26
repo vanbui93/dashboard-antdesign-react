@@ -1,6 +1,7 @@
-import React from 'react';
+import { DatePicker } from 'antd';
+import './scss/style.scss';
 import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.min.css';
 
 function App() {
   return (
@@ -10,13 +11,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
+        <DatePicker />
       </header>
     </div>
   );
