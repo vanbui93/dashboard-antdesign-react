@@ -67,7 +67,7 @@ const App: React.FC = () => {
         <div className="wrap-admin">
           <Outlet />
           <div className="sidebar-wrapper">
-            {/* <Sidebar opensidebar={opensidebar} onToggleSidebar={handleDrawerOpen} /> */}
+            <Sidebar opensidebar={opensidebar} onToggleSidebar={handleDrawerOpen} />
           </div>
         </div>
       </>

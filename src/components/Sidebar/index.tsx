@@ -1,10 +1,14 @@
 import { Drawer } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Sidebar() {
-  const [open, setOpen] = useState<boolean>(true);
+type Props = {
+  opensidebar: boolean;
+  onToggleSidebar: (val: boolean) => void;
+};
+
+const Sidebar: React.FC<Props> = ({ opensidebar, onToggleSidebar }) => {
   const onClose = () => {
-    setOpen(false);
+    onToggleSidebar(false);
   };
   return (
     <>
@@ -12,11 +16,11 @@ export default function Sidebar() {
         title="Basic Drawer"
         placement="left"
         onClose={onClose}
-        open={open}
+        open={opensidebar}
         className="wrap-drawer"
-        closable={false}>
-        <Sidebar />
-      </Drawer>
+        closable={true}></Drawer>
     </>
   );
-}
+};
+
+export default Sidebar;

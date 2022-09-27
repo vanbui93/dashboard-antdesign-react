@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import uiReducer from './reducers/ui';
+import logger from 'redux-logger';
+import rootReducer from './rootReducer';
 
 export const store = configureStore({
-  reducer: {
-    ui: uiReducer
-  }
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+  devTools: process.env.NODE_ENV !== 'production'
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
