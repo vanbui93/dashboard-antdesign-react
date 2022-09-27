@@ -1,8 +1,9 @@
-import { LayoutOutlined, TableOutlined } from '@ant-design/icons';
+import { TableOutlined, FileOutlined, LayoutOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import MainPage from '../../pages/MainPage';
 const { Sider } = Layout;
 
 type Props = {
@@ -11,21 +12,33 @@ type Props = {
 };
 
 const Sidebar: React.FC<Props> = ({ opensidebar }) => {
+  type MenuItem = Required<MenuProps>['items'][number];
+
+  function getItem(label: React.ReactNode, key: React.Key, icon?: React.ReactNode, children?: MenuItem[]): MenuItem {
+    return {
+      key,
+      icon,
+      children,
+      label
+    } as MenuItem;
+  }
+
+  const items: MenuItem[] = [
+    getItem(<Link to="/dashboard">Dashboard</Link>, '1', <LayoutOutlined />),
+    getItem(<Link to="/products">Products</Link>, '2', <TableOutlined />),
+    getItem(<Link to="/users">User</Link>, 'sub1', <UserOutlined />, [
+      getItem('Tom', '3'),
+      getItem('Bill', '4'),
+      getItem('Alex', '5')
+    ]),
+    getItem(<Link to="/team">Team</Link>, 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+    getItem(<Link to="/file">Files</Link>, '9', <FileOutlined />)
+  ];
+
   return (
     <Sider trigger={null} collapsible collapsed={opensidebar}>
       <div className="logo" />
-      <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
-        <Menu.Item className="menu-item-header" key="1">
-          <NavLink to="/dashboard">
-            <LayoutOutlined /> Dashboard
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item className="menu-item-header" key="2">
-          <NavLink to="/products">
-            <TableOutlined /> Products
-          </NavLink>
-        </Menu.Item>
-      </Menu>
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items} />
     </Sider>
   );
 };
