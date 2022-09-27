@@ -5,18 +5,18 @@ import { IRoute } from '../types';
 
 export const ADMIN_ROUTES: () => IRoute[] = () => [
   {
-    path: '/admin/main',
+    path: '/dashboard',
     main: <MainPage />
   },
   {
-    path: '/admin/products',
+    path: '/products',
     main: <Products />
   }
 ];
 
 export const LOGIN_ROUTES: () => IRoute[] = () => [
   {
-    path: '/admin',
+    path: '/login',
     main: <LoginPage />
   }
 ];
