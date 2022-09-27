@@ -4,15 +4,11 @@ import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
 
 const MainPage: React.FC = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState<boolean>(true);
   const [placement, setPlacement] = useState<DrawerProps['placement']>('left');
 
   const showDrawer = () => {
     setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
   };
 
   return (
@@ -22,15 +18,6 @@ const MainPage: React.FC = () => {
           Open
         </Button>
       </Space>
-      <Drawer
-        title="Basic Drawer"
-        placement="left"
-        onClose={onClose}
-        open={open}
-        className="wrap-drawer"
-        closable={false}>
-        <Sidebar />
-      </Drawer>
     </>
   );
 };
