@@ -1,23 +1,12 @@
-import type { DrawerProps, RadioChangeEvent } from 'antd';
-import { Button, Drawer, Radio, Space } from 'antd';
-import React, { useState } from 'react';
-import Sidebar from '../../components/Sidebar';
+import { Layout } from 'antd';
+import React from 'react';
 
 const MainPage: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(true);
-  const [placement, setPlacement] = useState<DrawerProps['placement']>('left');
-
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
   return (
     <>
-      <Space>
-        <Button type="primary" onClick={showDrawer}>
-          Open
-        </Button>
-      </Space>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum reiciendis inventore eum facere consequuntur,
+      tempore, magnam ducimus minus atque quibusdam recusandae cum nostrum magni odio aliquid aut facilis minima
+      deserunt.
     </>
   );
 };

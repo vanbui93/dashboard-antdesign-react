@@ -1,18 +1,20 @@
 import LoginPage from '../pages/LoginPage';
 import MainPage from '../pages/MainPage';
+import Products from '../pages/Products';
+import { IRoute } from '../types';
 
-interface Route {
-  path: string;
-  main: JSX.Element;
-}
-export const ADMIN_ROUTES: () => Route[] = () => [
+export const ADMIN_ROUTES: () => IRoute[] = () => [
   {
     path: '/admin/main',
     main: <MainPage />
+  },
+  {
+    path: '/admin/products',
+    main: <Products />
   }
 ];
 
-export const LOGIN_ROUTES: () => Route[] = () => [
+export const LOGIN_ROUTES: () => IRoute[] = () => [
   {
     path: '/admin',
     main: <LoginPage />

@@ -8,7 +8,7 @@ interface OpenSidebarState {
 
 // Define the initial state using that type
 const initialState: OpenSidebarState = {
-  opensidebar: true
+  opensidebar: false
 };
 
 const uiReducer = (state = initialState, action: AnyAction) => {
@@ -16,13 +16,13 @@ const uiReducer = (state = initialState, action: AnyAction) => {
     case types.SHOW_SIDEBAR: {
       return {
         ...state,
-        opensidebar: true
+        opensidebar: false
       };
     }
     case types.HIDE_SIDEBAR: {
       return {
         ...state,
-        opensidebar: false
+        opensidebar: true
       };
     }
     default:
