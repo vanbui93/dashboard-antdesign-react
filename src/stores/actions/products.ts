@@ -1,0 +1,132 @@
+import { onValue, query, ref, remove, set, update } from 'firebase/database';
+import { db } from './../../utils/firebase';
+
+import { Dispatch } from 'redux';
+import {
+  ADD_PRODUCT_FAIL,
+  ADD_PRODUCT_REQUEST,
+  ADD_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  FETCH_PRODUCTS_FAIL,
+  FETCH_PRODUCTS_REQUEST,
+  FETCH_PRODUCTS_SUCCESS,
+  UPDATE_PRODUCT_FAIL,
+  UPDATE_PRODUCT_REQUEST,
+  UPDATE_PRODUCT_SUCCESS
+} from '../constants/products';
+
+//load sản phẩm
+export const getProduct = () => async (dispatch: Dispatch) => {
+  try {
+    dispatch({ type: FETCH_PRODUCTS_REQUEST });
+
+    const productRef = query(ref(db, `products`));
+    onValue(
+      productRef,
+      async snapshot => {
+        const snapshots = await snapshot.val();
+        if (snapshot.val() !== null && snapshot.val !== undefined) {
+          dispatch({
+            type: FETCH_PRODUCTS_SUCCESS,
+            data: snapshots
+          });
+        }
+      },
+      {
+        onlyOnce: true
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: FETCH_PRODUCTS_FAIL,
+      message: error
+    });
+  }
+};
+
+//Xóa sản phẩm
+export const deleteProduct = (id: number) => async (dispatch: Dispatch) => {
+  try {
+    dispatch({
+      type: DELETE_PRODUCT_REQUEST
+    });
+
+    const productDelete = ref(db, `products/${id}`);
+    remove(productDelete)
+      .then(() => {
+        dispatch({
+          type: DELETE_PRODUCT_SUCCESS,
+          id
+        });
+      })
+      .catch(error => {
+        console.log('Có lỗi xảy ra :' + error);
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: DELETE_PRODUCT_FAIL,
+      message: error
+    });
+  }
+};
+
+//Update sản phẩm
+export const updateProduct = (product: any, images: any) => async (dispatch: Dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_PRODUCT_REQUEST
+    });
+
+    const productUpdate = ref(db, `products/${product.id}`);
+    const valueUpdate = {
+      ...product,
+      images: images,
+      update_date: new Date().toString().replace(/GMT.*/g, '')
+    };
+    update(productUpdate, valueUpdate)
+      .then(() => {
+        dispatch({
+          type: UPDATE_PRODUCT_SUCCESS,
+          product: valueUpdate
+        });
+      })
+      .catch(error => {
+        alert('Có lỗi xảy ra :' + error);
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: UPDATE_PRODUCT_FAIL,
+      message: error
+    });
+  }
+};
+//Thêm sản phẩm
+export const addProductObject = (product: any, id: number) => async (dispatch: Dispatch) => {
+  try {
+    dispatch({
+      type: ADD_PRODUCT_REQUEST
+    });
+    const newProduct = Object.assign(product, { id });
+    set(ref(db, 'products/' + id), product)
+      .then(() => {
+        dispatch({
+          type: ADD_PRODUCT_SUCCESS,
+          page: newProduct
+        });
+      })
+      .catch(error => {
+        alert('Có lỗi xảy ra :' + error);
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: ADD_PRODUCT_FAIL,
+      message: error
+    });
+  }
+};
