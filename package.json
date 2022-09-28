@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/pro-card": "^2.0.9",
+    "@ant-design/pro-components": "^2.3.13",
     "@ant-design/pro-layout": "^7.1.2",
     "@emotion/css": "^11.10.0",
     "@firebase/database": "^0.13.6",
