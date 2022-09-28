@@ -1,9 +1,8 @@
-import { TableOutlined, FileOutlined, LayoutOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
+import { FileOutlined, LayoutOutlined, TableOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MainPage from '../../pages/MainPage';
 const { Sider } = Layout;
 
 type Props = {
