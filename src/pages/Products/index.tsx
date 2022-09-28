@@ -6,6 +6,8 @@ const Products: React.FC = props => {
   const onChange = (e: RadioChangeEvent): void => {
     console.log(`radio checked:${e.target.value}`);
   };
+  console.log(data);
+
   return (
     <>
       <div className="tabled">
@@ -19,7 +21,7 @@ const Products: React.FC = props => {
                 <>
                   <Radio.Group onChange={onChange} defaultValue="a">
                     <Radio.Button value="a">All</Radio.Button>
-                    <Radio.Button value="b">ONLINE</Radio.Button>
+                    <Radio.Button value="b">SHOW</Radio.Button>
                   </Radio.Group>
                 </>
               }>

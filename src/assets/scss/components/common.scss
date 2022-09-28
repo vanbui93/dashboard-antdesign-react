@@ -1,0 +1,79 @@
+.ant-drawer-mask {
+  background: transparent;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+  text-align: left;
+}
+
+.trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.shape-avatar {
+  margin-right: 20px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.ant-avatar-group {
+  align-items: center;
+}
+
+.ant-employed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  color: #8c8c8c;
+}
+
+.avatar-info h5 {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 3px;
+}
+
+.avatar-info p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8c8c8c;
+  margin: 0px;
+}
+
+.ant-table-tbody>tr>td h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #141414;
+  margin-bottom: 0px;
+}
+
+.ant-table-tbody>tr>td p {
+  font-size: 14px;
+  color: #8c8c8c;
+  margin: 0px;
+}
+
+.ant-employed a {
+  color: #8c8c8c;
+  text-decoration: none;
+  font-weight: 600;
+}
